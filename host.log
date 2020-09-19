@@ -1,0 +1,4 @@
+2020-09-19 22:43:22,545 INFO:Welcome to MEGA parser 3000 :)
+2020-09-19 22:43:22,546 INFO:Processing file: 'input.csv'
+2020-09-19 22:43:22,550 DEBUG:Saving csv to output.csv (4 rows)
+2020-09-19 22:43:22,551 INFO:Successfully saved csv file: 'output.csv'
