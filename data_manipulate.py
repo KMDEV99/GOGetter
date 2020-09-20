@@ -17,7 +17,18 @@ class DataManipulate:
         :param values: list of values
         :returns: True if given parameters match criteria else False
         """
-        return hosts and len(hosts) == len(values)
+        is_valid = hosts and len(hosts) == len(values)
+        if is_valid:
+            for host in hosts:
+                is_valid = self.is_valid_host_name(host)
+                if not is_valid:
+                    break
+        if is_valid:
+            for value in values:
+                is_valid = self.is_valid_value(value)
+                if not is_valid:
+                    break
+        return is_valid
 
     def is_valid_host_name(self, host_name):
         """
@@ -53,11 +64,8 @@ class DataManipulate:
         res = {}
         for host_to_append, value_to_append in self.get_valid_row():
             for i, host_name in enumerate(host_to_append):
-                if not self.is_valid_value(value_to_append[i]):
-                    continue
                 try:
                     res[host_name].update(value_to_append[i])
                 except KeyError:
-                    if self.is_valid_host_name(host_name):
-                        res[host_name] = host.Host(value_to_append[i])
+                    res[host_name] = host.Host(value_to_append[i])
         return res

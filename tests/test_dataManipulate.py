@@ -24,7 +24,7 @@ class TestDataManipulate(TestCase):
         self.assertFalse(self.dm.is_valid_row(input_hosts, input_values))
 
     def test_is_valid_row_valid(self):
-        input_hosts = ['host1.bom', 'host2']
+        input_hosts = ['host1.bom', 'host2.com']
         input_values = [1123, 444545]
         self.assertTrue(self.dm.is_valid_row(input_hosts, input_values))
 
