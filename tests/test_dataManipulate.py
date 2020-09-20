@@ -63,8 +63,7 @@ class TestDataManipulate(TestCase):
         dm = DataManipulate(fh)
         dict_res = dm.get_host_dict_from_csv()
         for key in dict_res.keys():
-            print(key, dict_res[key], " == ", expected_value[key])
-            self.assertEqual(dict_res[key], expected_value[key])
+            self.assertEqual(dict_res[key], expected_value[key], msg="%s %s == %s" % (key, dict_res[key], expected_value[key]))
         self.assertFalse("host6.com" in dict_res.keys())
 
     def prepare_host(self, params):
