@@ -10,7 +10,7 @@ import logger
 
 def main(argv):
     logger.init_logger()
-    logging.info('Welcome to MEGA parser 3000 :) \nType -h for help')
+    logging.info('Welcome to GOGetter 3000 :) \nType -h for help')
 
     input_path, output_path = arguments_parser.parse_input(argv)
 
