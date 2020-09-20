@@ -41,10 +41,11 @@ class FileHandler:
         try:
             with open(self.output_path, 'w', newline='') as file:
                 output = writer(file)
-                output.writerow(['host', 'max', 'min', 'avg', 'sum'])
-                for key in hosts_dict.keys():
+                output.writerow(['host', 'min', 'max', 'avg', 'sum'])
+                sorted_keys = sorted(hosts_dict.keys())
+                for key in sorted_keys:
                     output.writerow(
-                        [key, hosts_dict[key].hMax, hosts_dict[key].hMin, hosts_dict[key].get_avg(),
+                        [key, hosts_dict[key].hMin, hosts_dict[key].hMax, hosts_dict[key].get_avg(),
                          hosts_dict[key].hSum])
             logging.info("Successfully saved csv file: '%s'" % self.output_path)
         except (FileNotFoundError, IOError) as err:

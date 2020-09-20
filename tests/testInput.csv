@@ -4,3 +4,4 @@
 "['host2.com','host4.com']","[1301.62,9203.05]"
 "['host1.com','host4.com','host1.com','host4.com']","[7026.18,6647.35,9618.39,8697.18]"
 "['host2.com','host4.com']","[1301.62]"
+"['host5.com', 'host6.com', 'host7.com']","[1812.97, 0.0, 1]"

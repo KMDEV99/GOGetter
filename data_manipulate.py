@@ -12,12 +12,12 @@ class DataManipulate:
 
     def is_valid_row(self, hosts, values):
         """
-        Checks if given strings match specified criteria (elements amount, value)
+        Checks if given strings match specified criteria (elements amount)
         :param hosts: lists of hosts
         :param values: list of values
         :returns: True if given parameters match criteria else False
         """
-        return host and len(hosts) == len(values) and 0 not in values
+        return host and len(hosts) == len(values)
 
     def is_valid_host_name(self, host_name):
         """
@@ -26,6 +26,14 @@ class DataManipulate:
         :returns: True if matched else False
         """
         return bool(match(self.host_name_pattern, host_name))
+
+    def is_valid_value(self, value):
+        """
+        Checks if value is greater than 0
+        :param value: float(value)
+        :returns: True if greater than 0 else False
+        """
+        return bool(value)
 
     def get_valid_row(self):
         """
@@ -45,6 +53,8 @@ class DataManipulate:
         res = {}
         for host_to_append, value_to_append in self.get_valid_row():
             for i, host_name in enumerate(host_to_append):
+                if not self.is_valid_value(value_to_append[i]):
+                    continue
                 try:
                     res[host_name].update(value_to_append[i])
                 except KeyError:
