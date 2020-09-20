@@ -17,7 +17,7 @@ class DataManipulate:
         :param values: list of values
         :returns: True if given parameters match criteria else False
         """
-        return host and len(hosts) == len(values)
+        return hosts and len(hosts) == len(values)
 
     def is_valid_host_name(self, host_name):
         """
