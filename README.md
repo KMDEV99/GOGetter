@@ -2,6 +2,15 @@
 
 Reads hosts and values from .csv file and calculates min, max, avg, sum for each host.
 
+## How to use GOGetter:
+
+
+`python main.py` &rarr; Reads `input.csv` and saves output in `output.csv`
+
+Optional arguments for speifying input/output path example:
+```
+python main.py -i %input_path% -o %output_path%
+```
 Valid rows (Only valid rows are processed):
 
 * have same number of elements in both columns
