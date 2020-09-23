@@ -7,7 +7,7 @@ Reads hosts and values from .csv file and calculates min, max, avg, sum for each
 
 `python main.py` &rarr; Reads `input.csv` and saves output in `output.csv`
 
-Optional arguments for speifying input/output path example:
+Optional arguments for specifying input/output path example:
 ```
 python main.py -i %input_path% -o %output_path%
 ```
