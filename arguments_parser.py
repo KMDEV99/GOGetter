@@ -15,6 +15,8 @@ def __init_parser():
     parser.add_argument('-o', type=str, default=default_output_path,
                         help='Output file path (Default path: "%s")' % default_output_path)
 
+    parser.add_argument('-t', type=str, default='csv', help='Input file format (Default format: "csv")')
+
     return parser
 
 
