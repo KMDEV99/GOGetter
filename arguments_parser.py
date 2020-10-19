@@ -1,7 +1,9 @@
 #! /usr/bin/python3
 
 import argparse
-from file_handler import default_input_path, default_output_path
+
+default_input_path = "input.csv"
+default_output_path = "output.csv"
 
 
 def __init_parser():
@@ -14,8 +16,6 @@ def __init_parser():
 
     parser.add_argument('-o', type=str, default=default_output_path,
                         help='Output file path (Default path: "%s")' % default_output_path)
-
-    parser.add_argument('-t', type=str, default='csv', help='Input file format (Default format: "csv")')
 
     return parser
 

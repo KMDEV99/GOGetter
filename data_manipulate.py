@@ -51,7 +51,7 @@ class DataManipulate:
         Yields valid rows from .csv file
         :returns: (list)hosts, (list)values
         """
-        for hosts_to_append, values_to_append in self.file_handler.read_row_from_csv():
+        for hosts_to_append, values_to_append in self.file_handler.read_row_from_file():
             if self.is_valid_row(hosts_to_append, values_to_append):
                 yield hosts_to_append, values_to_append
 

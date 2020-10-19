@@ -4,33 +4,34 @@ import logging
 from ast import literal_eval
 from csv import reader, writer
 
-default_input_path = "input.csv"
-default_output_path = "output.csv"
-
 
 class FileHandler:
     def __init__(self, input_path, output_path):
         self.input_path = input_path
         self.output_path = output_path
 
-    def read_row_from_csv(self):
+    def read_row_from_file(self):
         """
         Yields rows (host, value) one by one from .csv file if they meet specified conditions (syntax, value).
         :returns: (str)host, (str)value
         """
-        try:
-            with open(self.input_path, "r", newline='') as csv_file:
-                csv_reader = reader(csv_file)
-                header = next(csv_reader)
-                for hosts, values in csv_reader:
-                    try:
-                        hosts_to_append = literal_eval(hosts)
-                        values_to_append = literal_eval(values)
-                    except (SyntaxError, ValueError):
-                        continue
-                    yield hosts_to_append, values_to_append
-        except (FileNotFoundError, IOError, ValueError) as err:
-            logging.error(err)
+        file_format = self.input_path.split(".")[1]
+        if file_format == "csv":
+            try:
+                with open(self.input_path, "r", newline='') as csv_file:
+                    csv_reader = reader(csv_file)
+                    header = next(csv_reader)
+                    for hosts, values in csv_reader:
+                        try:
+                            hosts_to_append = literal_eval(hosts)
+                            values_to_append = literal_eval(values)
+                        except (SyntaxError, ValueError):
+                            continue
+                        yield hosts_to_append, values_to_append
+            except (FileNotFoundError, IOError, ValueError) as err:
+                logging.error(err)
+        else:
+            logging.error("Error following file extension is not supported!")
 
     def save_to_csv(self, hosts_dict):
         """
